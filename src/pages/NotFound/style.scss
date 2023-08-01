@@ -1,0 +1,33 @@
+.error {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.error__code {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+    font-size: 250px;
+    text-shadow: -2px 2px 0 #A5A5A5,
+                  2px 2px 0 #A5A5A5,
+                 2px -2px 0 #A5A5A5,
+                -2px -2px 0 #A5A5A5;
+}
+
+.error__code-desc {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 400;
+    color: #474747;
+}
+
+.error__desc {
+    width: 300px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #474747;
+}
