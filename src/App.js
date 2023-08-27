@@ -6,8 +6,13 @@ import FoundPost from "./pages/FoundPost/index"
 import Explore from "./pages/explore/index"
 import Category from "./pages/Category";
 import Profile from "./pages/Profile/index"
+import { useDispatch } from "react-redux";
+import { getPosts } from "./store/reducer/postsSlice";
 
 function App() {
+  const dispatch = useDispatch()
+  dispatch(getPosts())
+
   const token = localStorage.getItem("token")
   if(!token) {
     return <Auth/>

@@ -63,7 +63,7 @@ function Auth () {
                     <input className="sign-in-from__input" type="password" name="user_password" required placeholder="User Password"
                     onInput={e => setPassword(e.target.value)}/>
                     <button className="sign-in-from__btn" onClick={signIn}>Submit</button>
-                    <p onClick={e => updateClass(e.target)}>Already have an account? Log in here.</p>
+                    <p className="sign-up-log-in" onClick={e => updateClass(e.target)}>Already have an account? Log in here.</p>
                 </form>
                 <form className="log-in-from">
                     <h1 className="sign-in-from__title">Log In </h1>
@@ -72,7 +72,7 @@ function Auth () {
                     <input className="sign-in-from__input" type="password" name="user_password" required placeholder="User Password"
                     onInput={e => setPassword(e.target.value)}/>
                     <button className="sign-in-from__btn" onClick={logIn}>Submit</button>
-                    <p onClick={e => updateClass(e.target)}>Already have an account? Sign in here.</p>
+                    <p className="sign-up-log-in" onClick={e => updateClass(e.target)}>Already have an account? Sign in here.</p>
                 </form>
             </div>
         </div>
