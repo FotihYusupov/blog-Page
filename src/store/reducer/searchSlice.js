@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getSearch = createAsyncThunk("search/getSearch", ({title}) => {
-    console.log(title);
     if(title !== null) {
         return fetch(`https://blog-page-server.onrender.com/search/${title}`)
         .then(res => res.json())

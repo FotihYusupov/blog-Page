@@ -3,7 +3,6 @@ import useFetch from "../../hooks/useFetch";
 
 export const getPosts = createAsyncThunk("posts/getPosts",  () => {
     let res = useFetch("https://blog-page-server.onrender.com/posts")
-    console.log(res, 'res');
     return res
 });
 

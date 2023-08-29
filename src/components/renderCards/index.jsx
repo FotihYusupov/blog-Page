@@ -6,7 +6,6 @@ function RenderCards () {
     items = useSelector((state) => state.items.items);
 
     const data = useSelector((state) => state.posts);
-    console.log(data);
     if(items !== undefined) {
         return <>
             {

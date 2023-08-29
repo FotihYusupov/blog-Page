@@ -7,10 +7,9 @@ import { useSelector } from "react-redux"
 
 function Home () {
     const data = useSelector((state) => state.posts);
-
     return <>
         {
-            data ? <>
+            data.posts ? <>
                 <Header/>
                 <main>
                     <section className="hero-section">

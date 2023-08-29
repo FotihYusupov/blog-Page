@@ -15,6 +15,49 @@
     border: 0;
     border-radius: 10px;
     font-weight: bold;
+    cursor: pointer;
     background-color: #000000;
     color: #F4F4F4;
+}
+
+.posts-list {
+    padding: 0 50px;
+}
+
+.post-list__item {
+    padding: 0 25px 10px 25px;
+    border-bottom: 2px solid #909090;
+}
+
+.edit-post-wrapper {
+    display: flex;
+}
+
+.edit-post-btn {
+    :hover {
+        opacity: 1.7;
+    }
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 4px 10px;
+    border: 3px solid #32b544;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #32b544;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.delete-post-btn {
+    :hover {
+        opacity: 1.7;
+    }
+    margin-bottom: 10px;
+    padding: 4px 10px;
+    border: 3px solid #e82a2f;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #e82a2f;
+    font-weight: bold;
+    transition: 0.3s ease;
 }

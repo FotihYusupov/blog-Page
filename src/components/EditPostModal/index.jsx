@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, } from 'react-router-dom';
 import useFetch from "../../hooks/useFetch"
-import "./style.scss"
 import { RiCloseLine } from "react-icons/ri";
 
-const Modal = ({ setIsOpen }) => {
+
+const EditPostModal = ({ setIsOpenEdit }) => {
   const token = localStorage.getItem('token')
   let navigate = useNavigate();
   const [title, setTitle] = useState('')
@@ -14,7 +14,7 @@ const Modal = ({ setIsOpen }) => {
 
   let categories = useFetch('https://blog-page-server.onrender.com/categories')
 
-  async function addPost (e) {
+  async function editPost (e) {
     e.preventDefault()
     const formData = new FormData()
     formData.append('post_title', title)
@@ -41,17 +41,17 @@ const Modal = ({ setIsOpen }) => {
 
   return (
     <>
-      <div className="darkBG" onClick={() => setIsOpen(false)} />
+      <div className="darkBG" onClick={() => setIsOpenEdit(false)} />
       <div className="centered">
         <div className="modal">
           <div className="modalHeader">
-            <h5 className="heading">Add Post</h5>
+            <h5 className="heading">Edit Post</h5>
           </div>
-          <button className="closeBtn" onClick={() => setIsOpen(false)}>
+          <button className="closeBtn" onClick={() => setIsOpenEdit(false)}>
             <RiCloseLine style={{ marginBottom: "-3px" }} />
           </button>
           <div className="modalContent">
-            <form onSubmit={addPost}>
+            <form onSubmit={editPost}>
               <input className="add-post-input" type="text" name="post_title" placeholder="Post Title" required
               onChange={e => setTitle(e.target.value)}/>
               <input className="add-post-input" type="text" name="post_body" placeholder="Post Body" required
@@ -72,4 +72,4 @@ const Modal = ({ setIsOpen }) => {
   );
 };
 
-export default Modal;
+export default EditPostModal;

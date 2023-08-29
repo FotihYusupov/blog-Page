@@ -1,15 +1,31 @@
 import { useEffect, useState } from "react";
 import Loading from "../../components/Loading/index"
 import Modal from "../../components/Modal/index"
-import PostCard from "../../components/PostCard/index"
 import "./style.scss"
+import { Link } from "react-router-dom";
+// import EditPostModal from "../../components/EditPostModal";
 
 function Profile () {
     const [data, setData] = useState(null) 
     const [isOpen, setIsOpen] = useState(false);
-
+    // const [isOpenEdit, setIsOpenEdit] = useState(false);
     const token = localStorage.getItem("token")
-    
+
+    function deletePost(e) {
+        const item = e.closest('.post-list__item')
+        fetch(`https://blog-page-server.onrender.com/delete/${item.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'token': token
+            }
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(err => console.error(err));
+            window.location.reload();
+    }
+
     useEffect(() => {
         fetch('https://blog-page-server.onrender.com/profile', {
         headers: {
@@ -35,11 +51,22 @@ function Profile () {
                     {isOpen && <Modal setIsOpen={setIsOpen} />}
                     </div>
                     <h3>You Posts</h3>
-                    <ul className="category-posts-list">
+                    <ul className="category-posts-list posts-list">
                         {
-                            data.posts.map(e => <PostCard key={e.post_id} post_id={e.post_id} category_name={e.category_name} post_title={e.post_title} user_full_name={data.user_full_name}/>)
+                            data.posts.map(e => <li className="post-list__item" key={e.post_id} id={e.post_id}>
+                            <div className="hero-section__item-wrapper">
+                                <p className="hero-section__item-time">September 24.2020</p>
+                                <p className="hero-section__item-category">{e.category_name}</p>
+                            </div>
+                            <Link to={`post/${e.post_id}`} className="hero-section__item-title link">{e.post_title}</Link>
+                            <p className="hero-section__item-user">{data.user_full_name}</p>
+                            <span className="edit-post-wrapper">
+                                {/* <button className="edit-post-btn" onClick={() => setIsOpenEdit(true)}>Edit</button> */}
+                                {/* {isOpenEdit && <EditPostModal setIsOpenEdit={setIsOpenEdit}/>} */}
+                                <button className="delete-post-btn" onClick={e => deletePost(e.target)}>Delete</button>
+                            </span>
+                        </li>)
                         }
-                        <PostCard />
                     </ul>
                 </div>
             </section> : <Loading/>
